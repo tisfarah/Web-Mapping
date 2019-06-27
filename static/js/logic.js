@@ -20,6 +20,7 @@ var markers = L.markerClusterGroup();
 console.log(APILink);
 
 
+
 d3.json(APILink, function(response) {
   
   for (var i = 0; i < response.length; i++) {
