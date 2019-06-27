@@ -1,8 +1,8 @@
 // Creating map object
 var myMap = L.map("map", {
+  // center of United States 
   center: [37.7749, -100.4194],
   zoom: 5,
-  // layers: [grayscale, cities]
 
 });
 
@@ -15,19 +15,17 @@ L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 }).addTo(myMap);
 
 
-// Link to GeoJSON
+// Link to GeoJSON data 
 var APILink = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
-
 console.log(APILink);
-
 
 d3.json(APILink, function(response) {
 
   console.log(response);
 
   for (var i = 0; i < response.length; i++) {
-    var location = response[i].location;
+    var location = response[i].geometry;
 
     if (location) {
       L.marker([location.coordinates[1], location.coordinates[0]]).addTo(myMap);
